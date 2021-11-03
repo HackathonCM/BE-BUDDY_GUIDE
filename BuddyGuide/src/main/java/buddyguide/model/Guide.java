@@ -8,6 +8,7 @@ import lombok.ToString;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.Table;
 
 @Getter
@@ -30,6 +31,4 @@ public class Guide extends BaseEntity<Long> {
 
     @Column(name = "email")
     private String email;
-
-    private City city;
 }
