@@ -12,7 +12,6 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,16 +31,13 @@ public class BuddyGuideService implements IBuddyGuideService {
     public void login(String username, String password) throws Exception {
         Account account = accountService.getAccountByUsernameAndPassword(username, password);
         if (account == null) {
-            System.out.println("Inexistent");
             throw new Exception("This account does not exist!");
-        }
-        else{
+        } else {
             AccountType accountType = account.getAccountType();
-            if (accountType == AccountType.GUIDE){
+            if (accountType == AccountType.GUIDE) {
                 Guide guide = guideService.getGuideByID(account.getAccountOwnerID());
                 System.out.println(guide);
-            }
-            else{
+            } else {
                 User user = userService.getUserByID(account.getAccountOwnerID());
                 System.out.println(user);
             }
