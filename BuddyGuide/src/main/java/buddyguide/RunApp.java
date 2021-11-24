@@ -1,8 +1,8 @@
 package buddyguide;
 
-import buddyguide.repository.IAccountRepository;
-import buddyguide.service.impl.AccountService;
+import buddyguide.model.TourCategory;
 import buddyguide.service.impl.BuddyGuideService;
+import buddyguide.service.impl.TourService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -16,10 +16,11 @@ public class RunApp {
 
         BuddyGuideService buddyGuideService = applicationContext.getBean(BuddyGuideService.class);
 
-
+        TourService tourService = applicationContext.getBean(TourService.class);
+        tourService.getToursByCategory(TourCategory.ISTORIC).forEach(System.out::println);
         try {
             buddyGuideService.login("test", "test");
-        }catch (Exception ex){
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
     }
