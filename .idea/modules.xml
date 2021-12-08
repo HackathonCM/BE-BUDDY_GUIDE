@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/BE-BUDDY_GUIDE.iml" filepath="$PROJECT_DIR$/.idea/BE-BUDDY_GUIDE.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BuddyGuide/BuddyGuide.iml" filepath="$PROJECT_DIR$/BuddyGuide/BuddyGuide.iml" />
+    </modules>
+  </component>
+</project>
