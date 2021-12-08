@@ -6,10 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Enumerated;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -31,4 +29,18 @@ public class Guide extends BaseEntity<Long> {
 
     @Column(name = "email")
     private String email;
+
+    /*@Enumerated(EnumType.STRING)
+    @Column(name="main_category")
+    private TourCategory mainCategory;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name="secondary_category")
+    private TourCategory secondaryCategory;*/
+
+    @ElementCollection(targetClass = TourCategory.class)
+    @Column(name = "categories")
+    @Enumerated(EnumType.STRING)
+    private List<TourCategory> categories;
+
 }
