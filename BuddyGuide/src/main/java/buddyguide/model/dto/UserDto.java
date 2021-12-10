@@ -1,16 +1,13 @@
 package buddyguide.model.dto;
 
-import java.util.List;
-
-public class GuideDto extends BaseDto{
+public class UserDto extends BaseDto{
 
     private String firstName;
     private String lastName;
     private String telephone;
     private String email;
-    private List<String> categories;
 
-    public GuideDto(){}
+    public UserDto(){}
 
     public String getFirstName() {
         return firstName;
@@ -44,22 +41,13 @@ public class GuideDto extends BaseDto{
         this.email = email;
     }
 
-    public List<String> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(List<String> categories) {
-        this.categories = categories;
-    }
-
     @Override
     public String toString() {
-        return "GuideDto{" +
+        return "UserDto{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", telephone='" + telephone + '\'' +
                 ", email='" + email + '\'' +
-                ", categories=" + categories +
                 '}';
     }
 }
