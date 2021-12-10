@@ -30,7 +30,7 @@ public class AccountController {
     {
         try {
             buddyGuideService.login(accountDTO.getUsername(),accountDTO.getPassword());
-            return new ResponseEntity<> (accountDTO.getUsername(),HttpStatus.OK);
+            return new ResponseEntity<>(accountDTO.getUsername(),HttpStatus.OK);
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
