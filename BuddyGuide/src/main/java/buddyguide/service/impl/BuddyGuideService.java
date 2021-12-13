@@ -1,13 +1,7 @@
 package buddyguide.service.impl;
 
-import buddyguide.model.Account;
-import buddyguide.model.AccountType;
-import buddyguide.model.Guide;
-import buddyguide.model.User;
-import buddyguide.service.IAccountService;
-import buddyguide.service.IBuddyGuideService;
-import buddyguide.service.IGuideService;
-import buddyguide.service.IUserService;
+import buddyguide.model.*;
+import buddyguide.service.*;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +21,9 @@ public class BuddyGuideService implements IBuddyGuideService {
     @Autowired
     private IAccountService accountService;
 
+    @Autowired
+    private IReservationService reservationService;
+
     @Override
     public void login(String username, String password) throws Exception {
         Account account = accountService.getAccountByUsernameAndPassword(username, password);
@@ -42,5 +39,10 @@ public class BuddyGuideService implements IBuddyGuideService {
                 System.out.println(user);
             }
         }
+    }
+
+    @Override
+    public void makeReservation(Guide guide, User user) {
+        reservationService.addReservation(new Reservation(guide, user));
     }
 }

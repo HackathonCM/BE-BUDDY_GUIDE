@@ -4,15 +4,16 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-public class GuideDto extends BaseDto {
+public class UserDto extends BaseDto {
 
     private String firstName;
-    private String lastName;
-    private String telephone;
-    private String email;
-    private boolean available;
 
+    private String lastName;
+
+    private String telephone;
+
+    private String email;
 }

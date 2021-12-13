@@ -1,10 +1,6 @@
 package buddyguide.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -42,5 +38,8 @@ public class Guide extends BaseEntity<Long> {
     @Column(name = "categories")
     @Enumerated(EnumType.STRING)
     private List<TourCategory> categories;
+
+    @Column(name = "available")
+    boolean available = true;
 
 }
