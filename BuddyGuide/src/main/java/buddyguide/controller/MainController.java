@@ -1,10 +1,11 @@
 package buddyguide.controller;
 
 import buddyguide.converter.GuideConverter;
+import buddyguide.converter.UserConverter;
 import buddyguide.model.TourCategory;
 import buddyguide.model.dto.GuideDto;
 import buddyguide.service.impl.GuideService;
-import org.apache.log4j.Logger;
+import buddyguide.service.impl.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,13 +21,18 @@ import java.util.stream.Collectors;
 
 @RestController("mainController")
 public class MainController {
-    private static final Logger logger = Logger.getLogger(MainController.class.getName());
 
     @Autowired
     private GuideService guideService;
 
     @Autowired
+    private UserService userService;
+
+    @Autowired
     private GuideConverter guideConverter;
+
+    @Autowired
+    private UserConverter userConverter;
 
     @GetMapping("/guide/{guideId}/details")
     @ResponseBody
@@ -36,12 +42,10 @@ public class MainController {
             var searchedGuide=guideService.getGuideByID(guideId);
             var guideDto=guideConverter.convertModelToDto(searchedGuide);
 
-            System.out.println(searchedGuide.getCategories());
-
             return new ResponseEntity<>(guideDto, HttpStatus.OK);
         }
         catch(Exception e){
-            return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(null,HttpStatus.NO_CONTENT);
         }
     }
 
@@ -77,5 +81,20 @@ public class MainController {
             return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
         }
 
+    }
+
+    @GetMapping("/user/{userId}/details")
+    @ResponseBody
+    public ResponseEntity<?> getUserById(@PathVariable("userId") String userIdAsString){
+        try{
+            var userId=Long.parseLong(userIdAsString);
+            var searchedUser=userService.getUserByID(userId);
+            var userDto=userConverter.convertModelToDto(searchedUser);
+
+            return new ResponseEntity<>(userDto, HttpStatus.OK);
+        }
+        catch(Exception e){
+            return new ResponseEntity<>(null,HttpStatus.NO_CONTENT);
+        }
     }
 }
