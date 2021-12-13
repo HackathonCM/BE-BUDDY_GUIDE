@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
@@ -16,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "guides")
-public class Guide extends BaseEntity<Long> {
+public class Guide extends BaseEntity<Long> implements Serializable {
 
     @Column(name = "first_name")
     private String firstName;
@@ -29,6 +30,12 @@ public class Guide extends BaseEntity<Long> {
 
     @Column(name = "email")
     private String email;
+
+    private String type;
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     /*@Enumerated(EnumType.STRING)
     @Column(name="main_category")

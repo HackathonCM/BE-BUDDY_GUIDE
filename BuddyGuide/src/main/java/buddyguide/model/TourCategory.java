@@ -1,6 +1,9 @@
 package buddyguide.model;
 
 public enum TourCategory {
-    ISTORIC,
-    CLUBURI
+    RELIGION,
+    ENTERTAINMENT,
+    CULTURAL,
+    RESTAURANTS,
+    PARKS
 }

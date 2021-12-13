@@ -1,9 +1,6 @@
 package buddyguide.service.impl;
 
-import buddyguide.model.Account;
-import buddyguide.model.AccountType;
-import buddyguide.model.Guide;
-import buddyguide.model.User;
+import buddyguide.model.*;
 import buddyguide.service.IAccountService;
 import buddyguide.service.IBuddyGuideService;
 import buddyguide.service.IGuideService;
@@ -12,10 +9,12 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Component
+@CrossOrigin("http://localhost:3000")
 public class BuddyGuideService implements IBuddyGuideService {
 
     @Autowired
@@ -28,7 +27,7 @@ public class BuddyGuideService implements IBuddyGuideService {
     private IAccountService accountService;
 
     @Override
-    public void login(String username, String password) throws Exception {
+    public BaseEntity<Long> login(String username, String password) throws Exception {
         Account account = accountService.getAccountByUsernameAndPassword(username, password);
         if (account == null) {
             throw new Exception("This account does not exist!");
@@ -36,10 +35,10 @@ public class BuddyGuideService implements IBuddyGuideService {
             AccountType accountType = account.getAccountType();
             if (accountType == AccountType.GUIDE) {
                 Guide guide = guideService.getGuideByID(account.getAccountOwnerID());
-                System.out.println(guide);
+                return guide;
             } else {
                 User user = userService.getUserByID(account.getAccountOwnerID());
-                System.out.println(user);
+                return user;
             }
         }
     }

@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="BuddyGuide" target="15" />
+      <module name="BuddyGuide" target="14" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

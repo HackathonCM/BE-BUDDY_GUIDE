@@ -1,6 +1,9 @@
 package buddyguide.controllers;
 
 
+import buddyguide.model.BaseEntity;
+import buddyguide.model.Guide;
+import buddyguide.model.User;
 import buddyguide.model.dtos.AccountDTO;
 import buddyguide.service.impl.AccountService;
 import buddyguide.service.impl.BuddyGuideService;
@@ -11,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin("http://localhost:3000")
 @RequestMapping(value = "/account")
 public class AccountController {
 
@@ -29,8 +32,20 @@ public class AccountController {
     public ResponseEntity<String> checkUsernameAndPassword(@RequestBody AccountDTO accountDTO)
     {
         try {
-            buddyGuideService.login(accountDTO.getUsername(),accountDTO.getPassword());
-            return new ResponseEntity<> (accountDTO.getUsername(),HttpStatus.OK);
+            ResponseEntity response;
+            BaseEntity<Long> entity = buddyGuideService.login(accountDTO.getUsername(),accountDTO.getPassword());
+            if (entity instanceof User) {
+                User user = (User) entity;
+                user.setType("USER");
+                response = new ResponseEntity<>(user, HttpStatus.OK);
+            }
+            else {
+                Guide guide = (Guide) entity;
+                guide.setType("GUIDE");
+                response = new ResponseEntity<>(guide, HttpStatus.OK);
+            }
+
+            return response;
         } catch (Exception e) {
             e.printStackTrace();
             return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);

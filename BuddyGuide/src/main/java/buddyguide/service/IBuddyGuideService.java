@@ -1,6 +1,8 @@
 package buddyguide.service;
 
+import buddyguide.model.BaseEntity;
+
 public interface IBuddyGuideService {
 
-    void login(String username, String password) throws Exception;
+    BaseEntity<Long> login(String username, String password) throws Exception;
 }
