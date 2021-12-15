@@ -1,4 +1,4 @@
-package buddyguide.model.dtos;
+package buddyguide.model.dto;
 
 import com.sun.istack.NotNull;
 import lombok.AllArgsConstructor;

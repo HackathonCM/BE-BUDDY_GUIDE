@@ -8,21 +8,23 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Component("guideConverter")
-public class GuideConverter implements IConverter<Guide, GuideDto>{
+public class GuideConverter implements IConverter<Guide, GuideDto> {
 
     @Override
     public GuideDto convertModelToDto(Guide guide) {
-        var guideDto=new GuideDto();
+        var guideDto = new GuideDto();
 
         guideDto.setId(guide.getId());
         guideDto.setFirstName(guide.getFirstName());
         guideDto.setLastName(guide.getLastName());
         guideDto.setTelephone(guide.getTelephone());
         guideDto.setEmail(guide.getEmail());
+        guideDto.setType(guideDto.getType());
+        guideDto.setAvailable(guide.isAvailable());
 
         List<String> categoriesList;
-        categoriesList= guide.getCategories().stream()
-                .map(elem->elem.toString())
+        categoriesList = guide.getCategories().stream()
+                .map(elem -> elem.toString())
                 .collect(Collectors.toList());
         guideDto.setCategories(categoriesList);
 

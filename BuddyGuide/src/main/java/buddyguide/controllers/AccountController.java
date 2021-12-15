@@ -4,7 +4,7 @@ package buddyguide.controllers;
 import buddyguide.model.BaseEntity;
 import buddyguide.model.Guide;
 import buddyguide.model.User;
-import buddyguide.model.dtos.AccountDTO;
+import buddyguide.model.dto.AccountDTO;
 import buddyguide.service.impl.AccountService;
 import buddyguide.service.impl.BuddyGuideService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,25 +21,23 @@ public class AccountController {
     private final AccountService accountService;
 
     @Autowired
-    public AccountController(AccountService accountService){
-        this.accountService=accountService;
+    public AccountController(AccountService accountService) {
+        this.accountService = accountService;
     }
 
     @Autowired
     private BuddyGuideService buddyGuideService;
 
     @PostMapping()
-    public ResponseEntity<String> checkUsernameAndPassword(@RequestBody AccountDTO accountDTO)
-    {
+    public ResponseEntity<String> checkUsernameAndPassword(@RequestBody AccountDTO accountDTO) {
         try {
             ResponseEntity response;
-            BaseEntity<Long> entity = buddyGuideService.login(accountDTO.getUsername(),accountDTO.getPassword());
+            BaseEntity<Long> entity = buddyGuideService.login(accountDTO.getUsername(), accountDTO.getPassword());
             if (entity instanceof User) {
                 User user = (User) entity;
                 user.setType("USER");
                 response = new ResponseEntity<>(user, HttpStatus.OK);
-            }
-            else {
+            } else {
                 Guide guide = (Guide) entity;
                 guide.setType("GUIDE");
                 response = new ResponseEntity<>(guide, HttpStatus.OK);
@@ -49,7 +47,7 @@ public class AccountController {
 
         } catch (Exception e) {
             e.printStackTrace();
-            return new ResponseEntity<>(null,HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
         }
     }
 }

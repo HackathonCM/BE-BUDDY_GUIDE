@@ -1,10 +1,6 @@
 package buddyguide.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -33,21 +29,12 @@ public class Guide extends BaseEntity<Long> implements Serializable {
 
     private String type;
 
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    /*@Enumerated(EnumType.STRING)
-    @Column(name="main_category")
-    private TourCategory mainCategory;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name="secondary_category")
-    private TourCategory secondaryCategory;*/
-
     @ElementCollection(targetClass = TourCategory.class)
     @Column(name = "categories")
     @Enumerated(EnumType.STRING)
     private List<TourCategory> categories;
+
+    @Column(name = "available")
+    boolean available = true;
 
 }

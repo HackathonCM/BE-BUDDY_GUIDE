@@ -1,10 +1,6 @@
 package buddyguide.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,7 +30,4 @@ public class User extends BaseEntity<Long> implements Serializable {
 
     private String type;
 
-    public void setType(String type) {
-        this.type = type;
-    }
 }
