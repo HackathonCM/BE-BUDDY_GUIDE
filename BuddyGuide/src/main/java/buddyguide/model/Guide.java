@@ -27,6 +27,7 @@ public class Guide extends BaseEntity<Long> implements Serializable {
     @Column(name = "email")
     private String email;
 
+    @Transient
     private String type;
 
     @ElementCollection(targetClass = TourCategory.class)

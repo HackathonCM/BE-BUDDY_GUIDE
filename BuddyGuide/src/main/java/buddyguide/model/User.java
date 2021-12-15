@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.io.Serializable;
 
 @Getter
@@ -28,6 +29,7 @@ public class User extends BaseEntity<Long> implements Serializable {
     @Column(name = "email")
     private String email;
 
+    @Transient
     private String type;
 
 }
