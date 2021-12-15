@@ -21,6 +21,7 @@ public class GuideConverter implements IConverter<Guide, GuideDto> {
         guideDto.setEmail(guide.getEmail());
         guideDto.setType(guideDto.getType());
         guideDto.setAvailable(guide.isAvailable());
+        guideDto.setPrice(guide.getPrice());
 
         List<String> categoriesList;
         categoriesList = guide.getCategories().stream()

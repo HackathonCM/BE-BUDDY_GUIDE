@@ -38,4 +38,7 @@ public class Guide extends BaseEntity<Long> implements Serializable {
     @Column(name = "available")
     boolean available = true;
 
+    @Column(name = "price")
+    private String price;
+
 }

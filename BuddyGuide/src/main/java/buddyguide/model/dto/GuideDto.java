@@ -18,4 +18,5 @@ public class GuideDto extends BaseDto {
     private String type;
     private List<String> categories;
     private boolean available;
+    private String price;
 }
