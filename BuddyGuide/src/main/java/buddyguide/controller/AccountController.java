@@ -1,4 +1,4 @@
-package buddyguide.controllers;
+package buddyguide.controller;
 
 
 import buddyguide.model.BaseEntity;
