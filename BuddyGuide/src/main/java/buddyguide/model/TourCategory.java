@@ -4,6 +4,5 @@ public enum TourCategory {
     RELIGION,
     ENTERTAINMENT,
     CULTURAL,
-    RESTAURANTS,
-    PARKS
+    PARTY
 }
