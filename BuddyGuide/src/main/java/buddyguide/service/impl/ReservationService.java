@@ -7,8 +7,6 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @AllArgsConstructor
 @Service("reservationService")
 public class ReservationService implements IReservationService {
@@ -25,10 +23,5 @@ public class ReservationService implements IReservationService {
     public void addReservation(Reservation reservation) {
         reservationRepository.save(reservation);
         reservation.getGuide().setAvailable(false);
-    }
-
-    @Override
-    public List<Reservation> getAllReservations() {
-        return reservationRepository.findAll();
     }
 }

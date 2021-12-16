@@ -43,9 +43,8 @@ public class MainController {
 
     @GetMapping("/guide/{guideId}/details")
     @ResponseBody
-    public ResponseEntity<?> getGuideById(@PathVariable("guideId") String guideIdAsString) {
+    public ResponseEntity<?> getGuideById(@PathVariable("guideId") long guideId) {
         try {
-            var guideId = Long.parseLong(guideIdAsString);
             var searchedGuide = guideService.getGuideByID(guideId);
             var guideDto = guideConverter.convertModelToDto(searchedGuide);
 
@@ -89,9 +88,8 @@ public class MainController {
 
     @GetMapping("/user/{userId}/details")
     @ResponseBody
-    public ResponseEntity<?> getUserById(@PathVariable("userId") String userIdAsString) {
+    public ResponseEntity<?> getUserById(@PathVariable("userId") long userId) {
         try {
-            var userId = Long.parseLong(userIdAsString);
             var searchedUser = userService.getUserByID(userId);
             var userDto = userConverter.convertModelToDto(searchedUser);
 
@@ -106,6 +104,7 @@ public class MainController {
     public ResponseEntity<?> getGuideNotification(@PathVariable("guideId") long guideId) {
         try {
             var reservation = reservationService.getReservationByGuideId(guideId);
+            System.out.println(reservation);
             var user = userConverter.convertModelToDto(reservation.getUser());
             return new ResponseEntity<>(user, HttpStatus.OK);
         } catch (Exception e) {

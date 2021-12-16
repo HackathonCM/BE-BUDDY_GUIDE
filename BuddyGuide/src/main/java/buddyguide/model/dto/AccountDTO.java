@@ -1,10 +1,7 @@
 package buddyguide.model.dto;
 
-import com.sun.istack.NotNull;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import lombok.*;
 
 @Getter
 @Setter
@@ -12,9 +9,9 @@ import lombok.Setter;
 @AllArgsConstructor
 
 public class AccountDTO {
-    @NotNull
+    @NonNull
     private String username;
 
-    @NotNull
+    @NonNull
     private String password;
 }

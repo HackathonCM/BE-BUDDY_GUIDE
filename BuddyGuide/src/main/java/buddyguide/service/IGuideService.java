@@ -7,9 +7,7 @@ import java.util.List;
 
 public interface IGuideService {
 
-    Guide getGuideByID(Long Id);
-
-    List<Guide> getAllGuides();
+    Guide getGuideByID(Long id);
 
     List<Guide> getGuidesForGivenCategory(TourCategory category);
 }

@@ -34,11 +34,9 @@ public class BuddyGuideService implements IBuddyGuideService {
         } else {
             AccountType accountType = account.getAccountType();
             if (accountType == AccountType.GUIDE) {
-                Guide guide = guideService.getGuideByID(account.getAccountOwnerID());
-                return guide;
+                return guideService.getGuideByID(account.getAccountOwnerID());
             } else {
-                User user = userService.getUserByID(account.getAccountOwnerID());
-                return user;
+                return userService.getUserByID(account.getAccountOwnerID());
             }
         }
     }

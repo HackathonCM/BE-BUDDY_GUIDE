@@ -20,13 +20,8 @@ public class GuideService implements IGuideService {
     private IGuideRepository guideRepository;
 
     @Override
-    public Guide getGuideByID(Long Id) {
-        return guideRepository.getById(Id);
-    }
-
-    @Override
-    public List<Guide> getAllGuides() {
-        return guideRepository.findAll();
+    public Guide getGuideByID(Long id) {
+        return guideRepository.getById(id);
     }
 
     @Override

@@ -4,5 +4,5 @@ import buddyguide.model.User;
 
 public interface IUserService {
 
-    User getUserByID(Long Id);
+    User getUserByID(long id);
 }
