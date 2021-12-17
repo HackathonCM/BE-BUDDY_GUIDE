@@ -21,7 +21,9 @@ public class ReservationService implements IReservationService {
 
     @Override
     public void addReservation(Reservation reservation) {
-        reservation.getGuide().setAvailable(false);
-        reservationRepository.save(reservation);
+        if (reservationRepository.getReservationByGuideAndUser(reservation.getGuide(), reservation.getUser()) == null) {
+            reservation.getGuide().setAvailable(false);
+            reservationRepository.save(reservation);
+        }
     }
 }
