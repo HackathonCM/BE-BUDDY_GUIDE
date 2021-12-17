@@ -1,7 +1,6 @@
 package buddyguide.service.impl;
 
 import buddyguide.model.Reservation;
-import buddyguide.repository.IGuideRepository;
 import buddyguide.repository.IReservationRepository;
 import buddyguide.service.IReservationService;
 import lombok.AllArgsConstructor;
@@ -14,9 +13,6 @@ public class ReservationService implements IReservationService {
 
     @Autowired
     private IReservationRepository reservationRepository;
-
-    @Autowired
-    private IGuideRepository guideRepository;
 
     @Override
     public Reservation getReservationByGuideId(long guideId) {
